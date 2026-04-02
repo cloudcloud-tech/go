@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+
+<meta charset="UTF-8">
+
+<title>Gomoku AI</title>
+
+<style>
+
+body{
+text-align:center;
+font-family:sans-serif;
+background:#f5f5f5;
+}
+
+canvas{
+background:#dba15c;
+border:2px solid black;
+margin-top:20px;
+}
+
+.controls{
+margin-top:15px;
+}
+
+select,button{
+padding:8px;
+font-size:16px;
+margin:5px;
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+<h1>Gomoku AI</h1>
+
+
+<!-- 난이도 선택 -->
+
+<div class="controls">
+
+<select id="difficulty">
+
+<option value="beginner">
+Beginner
+</option>
+
+<option value="easy">
+Easy
+</option>
+
+<option value="medium" selected>
+Medium
+</option>
+
+<option value="hard">
+Hard
+</option>
+
+<option value="strong">
+Strong
+</option>
+
+<option value="mcts">
+MCTS (Very Hard)
+</option>
+
+</select>
+
+
+<button id="startBtn">
+새 게임
+</button>
+
+</div>
+
+
+<!-- 보드 -->
+
+<canvas
+id="board"
+width="600"
+height="600">
+</canvas>
+
+
+
+<!-- JS 연결 -->
+
+<script type="module">
+
+import {
+initGame,
+setDifficulty
+} from "./js/game.js"
+
+
+let startBtn =
+document.getElementById("startBtn")
+
+let difficultySelect =
+document.getElementById("difficulty")
+
+
+// 게임 시작
+
+startBtn.addEventListener(
+"click",
+()=>{
+
+setDifficulty(
+difficultySelect.value
+)
+
+initGame()
+
+}
+)
+
+
+// 처음 자동 시작
+
+setDifficulty(
+difficultySelect.value
+)
+
+initGame()
+
+</script>
+
+
+</body>
+</html>
